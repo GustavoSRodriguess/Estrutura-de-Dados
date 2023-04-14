@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <math.h>
 
 #define TAMANHO 10000
 
@@ -17,7 +16,7 @@ int main (){
 	
 	srand(time(0));
 	
-	geraNumero(x,3);
+	geraNumero(x,3 );
 	
 	int qtd_trocas = 0;
     int qtd_comparacoes = 0; 
@@ -55,7 +54,7 @@ void geraNumero(int *vet, int op)
         }
         break;
 
-    case 3: // Aleatórios
+    case 3: // Aleatï¿½rios
         for (i = 0; i < TAMANHO; i++)
         {
             vet[i] = (int)(rand() % TAMANHO);
@@ -81,21 +80,22 @@ void intercala(int x[], int inicio, int fim, int meio, int *qtd_trocas, int *qtd
     while (iniciovetor1 <= meio && iniciovetor2 <= fim) {
     	
     	(*qtd_comparacoes)++;
-    	
         if (x[iniciovetor1] <= x[iniciovetor2]) {
             aux[poslivre] = x[iniciovetor1];
             iniciovetor1++;
         } else {
             aux[poslivre] = x[iniciovetor2];
             iniciovetor2++;
-            (*qtd_trocas)++;
+            //(*qtd_trocas)++;
         }
         poslivre++;
+	
     }
 
     for (i = iniciovetor1; i <= meio; i++) {
         aux[poslivre] = x[i];
         poslivre++;
+        
     }
 
     for (i = iniciovetor2; i <= fim; i++) {
@@ -105,6 +105,7 @@ void intercala(int x[], int inicio, int fim, int meio, int *qtd_trocas, int *qtd
 
     for (i = inicio; i <= fim; i++) {
         x[i] = aux[i];
+        (*qtd_trocas)++;
     }
 
 }
